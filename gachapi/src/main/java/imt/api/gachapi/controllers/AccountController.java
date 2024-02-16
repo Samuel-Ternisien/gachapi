@@ -5,6 +5,8 @@ import imt.api.gachapi.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.NoSuchAlgorithmException;
+
 @RestController
 @RequestMapping("/account")
 public class AccountController {
@@ -18,5 +20,10 @@ public class AccountController {
     @PostMapping
     public Account postAccount(@RequestBody Account account){
         return this.accountService.save(account);
+    }
+
+    @PostMapping("/login")
+    public String auth(@RequestBody Account account) throws NoSuchAlgorithmException {
+        return this.accountService.auth(account.getUsername(), account.getPassword());
     }
 }

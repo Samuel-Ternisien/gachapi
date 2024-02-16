@@ -32,3 +32,8 @@ logs-db:
 ## Log spring-app
 logs-spring:
 	docker-compose logs -f app-server
+
+## Login db
+login-db:
+	docker exec -it gachapi-db-1 /bin/mongosh gachadb
+	user gachadb
