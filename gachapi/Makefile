@@ -36,4 +36,3 @@ logs-spring:
 ## Login db
 login-db:
 	docker exec -it gachapi-db-1 /bin/mongosh gachadb
-	user gachadb
