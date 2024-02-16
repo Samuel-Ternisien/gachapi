@@ -1,7 +1,3 @@
-## Run Spring app using maven
-spring-run:
-	mvn spring-boot:run
-
 ## Create new jar of the spring app and build a new image for docker
 build-spring:
 	mvn clean package
