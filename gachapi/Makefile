@@ -9,7 +9,6 @@ build:
 
 ## Start app
 up:
-	docker-compose stop
 	docker-compose up -d --remove-orphans db
 	timeout 5
 	docker-compose up -d --remove-orphans app-server
