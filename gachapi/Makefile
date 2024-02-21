@@ -19,6 +19,7 @@ down:
 
 ## Refresh spring
 refresh-spring:
+	docker build -t gachi-api/spring:latest .
 	docker-compose stop app-server
 	docker-compose build app-server
 	docker-compose up -d --remove-orphans app-server
