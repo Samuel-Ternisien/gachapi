@@ -19,8 +19,8 @@ down:
 
 ## Refresh spring
 refresh-spring:
-	docker-compose stop app-server
-	docker-compose build app-server
+	docker cp ./target/gachapi-0.0.1-SNAPSHOT.jar gachapi-app-server-1
+	docker-compose down app-server
 	docker-compose up -d --remove-orphans app-server
 
 
