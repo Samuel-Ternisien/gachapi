@@ -1,4 +1,4 @@
-package imt.api.gachapi.beans;
+package imt.api.account.beans;
 
 import lombok.Getter;
 import lombok.Setter;

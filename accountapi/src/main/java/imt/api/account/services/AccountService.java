@@ -1,7 +1,7 @@
-package imt.api.gachapi.services;
+package imt.api.account.services;
 
-import imt.api.gachapi.beans.Account;
-import imt.api.gachapi.repositories.AccountRepository;
+import imt.api.account.beans.Account;
+import imt.api.account.repositories.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

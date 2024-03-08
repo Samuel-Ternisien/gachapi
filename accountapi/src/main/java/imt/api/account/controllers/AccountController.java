@@ -1,7 +1,7 @@
-package imt.api.gachapi.controllers;
+package imt.api.account.controllers;
 
-import imt.api.gachapi.beans.Account;
-import imt.api.gachapi.services.AccountService;
+import imt.api.account.beans.Account;
+import imt.api.account.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
