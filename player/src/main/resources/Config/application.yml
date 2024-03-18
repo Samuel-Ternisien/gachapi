@@ -1,0 +1,8 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://mongoadmin:password@localhost:27017
+      database: playerdb
+
+server:
+  port: 8081

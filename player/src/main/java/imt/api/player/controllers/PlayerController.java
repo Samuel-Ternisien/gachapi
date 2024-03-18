@@ -1,8 +1,8 @@
 package imt.api.player.controllers;
 
-import imt.api.gachapi.beans.player.Monster;
-import imt.api.gachapi.beans.player.Player;
-import imt.api.gachapi.services.PlayerService;
+import imt.api.player.player.Monster;
+import imt.api.player.player.Player;
+import imt.api.player.services.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,8 +49,15 @@ public class PlayerController {
         return playerService.addNewMonster(id, monster);
     }
 
+
     @DeleteMapping("/{id}/monster/{monsterId}")
     public Player deleteMonster(@PathVariable int id, @PathVariable int monsterId) {
         return playerService.deleteMonster(id, monsterId);
     }
+
+    @PostMapping("/add")
+    public Player addPlayer(@RequestBody Player player) {
+        return playerService.addPlayer(player);
+    }
+
 }

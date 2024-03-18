@@ -1,8 +1,9 @@
 package imt.api.player.services;
 
-import imt.api.gachapi.beans.player.Monster;
-import imt.api.gachapi.beans.player.Player;
-import imt.api.gachapi.repositories.PlayerRepository;
+import imt.api.player.controllers.PlayerController;
+import imt.api.player.repositories.PlayerRepository;
+import imt.api.player.player.Monster;
+import imt.api.player.player.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,9 +53,15 @@ public class PlayerService {
         return playerRepository.save(player);
     }
 
+
     public Player deleteMonster(int id, int monsterId) {
         Player player = playerRepository.findPlayerById(id);
         player.getMonsters().removeIf(monster -> monster.getId() == monsterId);
         return playerRepository.save(player);
     }
+
+    public Player addPlayer(Player player) {
+        return playerRepository.save(player);
+    }
+
 }
