@@ -1,9 +1,14 @@
 services:
-  mongodb:
+  db:
     image: 'mongo:latest'
-    environment:
-      - 'MONGO_INITDB_DATABASE=mydatabase'
-      - 'MONGO_INITDB_ROOT_PASSWORD=secret'
-      - 'MONGO_INITDB_ROOT_USERNAME=root'
     ports:
-      - '27017'
+      - '27017:27017'
+    restart: always
+
+  app-server:
+    image: 'gachi-player/spring:latest'
+    depends_on:
+      - db
+    ports:
+      - '8081:8081'
+    restart: always
