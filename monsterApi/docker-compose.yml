@@ -1,11 +1,24 @@
 version: '3.3'
 services:
-  mongo:
+  monster-mongo:
+    image: mongo
     ports:
       - '27017:27017'
-    container_name: mongoMonster
+    container_name: monster-mongo
     restart: always
     environment:
       - MONGO_INITDB_ROOT_USERNAME=mongoadmin
       - MONGO_INITDB_ROOT_PASSWORD=password
-    image: mongo
+    volumes:
+      - ./mongodb_data_container:/data/db
+
+  monster-app:
+    build: .
+    image: monster-app
+    container_name: monster-app
+    ports:
+      - "8085:8080"
+    links:
+      - monster-mongo
+    depends_on:
+      - monster-mongo
