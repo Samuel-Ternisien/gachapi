@@ -4,4 +4,3 @@ spring:
       host: localhost
 urls:
   authentifcation: http://localhost:8080/account
-  player: http://localhost:8081/player

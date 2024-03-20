@@ -30,29 +30,33 @@ public class PlayerController {
         restTemplate = new RestTemplate();
     }
 
-    @PostMapping("/token")
-    public String validateToken(@RequestBody String token) {
+    public String validateToken(String token) {
         // Define url
         String url = String.format("%s/validate/%s", env.getProperty("urls.authentification"), token);
-        
+
         // Make a POST request and retrieve the response
-        ResponseEntity<String> response = restTemplate.postForEntity(url, null, String.class);
-        
-        // Print the response body
-        if (response.getStatusCode().is2xxSuccessful()) {
-            return response.getBody();
+        try {
+            ResponseEntity<String> response = restTemplate.postForEntity(url, null, String.class);
+            if (response.getStatusCode().is2xxSuccessful()) {
+                return response.getBody();
+            }
+        } catch (Exception e) {
+            return "Invalid credentials";
         }
-        else
-            return "Error";
+        return "Invalid credentials";
     }
 
     @GetMapping("/{id}")
-    public Player getPlayerInfo(@PathVariable int id) {
+    public Player getPlayerInfo(@RequestHeader String token, @PathVariable int id) {
+        String res = validateToken(token);
+        if (res.equals("Invalid credentials")) return null;
         return playerService.getPlayerInfo(id);
     }
 
     @GetMapping("/{id}/monstres")
-    public List<Monster> getMonstersOfPlayer(@PathVariable int id) {
+    public List<Monster> getMonstersOfPlayer(@RequestHeader String token, @PathVariable int id) {
+        String res = validateToken(token);
+        if (res.equals("Invalid credentials")) return null;
         return playerService.getMonstersOfPlayer(id);
     }
 

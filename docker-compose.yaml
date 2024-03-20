@@ -46,7 +46,18 @@ services:
       - account-app
     depends_on:
       db:
-          condition: service_healthy
+        condition: service_healthy
+
+  monster-app:
+    build: ./monsterApi/.
+    ports:
+      - "8082:8080"
+    links:
+      - db
+    depends_on:
+      db:
+        condition: service_healthy
+
 
 volumes:
   mongo-data:
