@@ -48,11 +48,5 @@ public class AccountService {
             return ResponseEntity.status(200).body(account.getUsername());
         }
         return ResponseEntity.status(401).body("Invalid Token");
-        /*
-        if (account != null) {
-            return ResponseEntity.status(200).body(account.getUsername());
-        }
-        return ResponseEntity.status(401).body("Invalid Token");
-        */
     }
 }

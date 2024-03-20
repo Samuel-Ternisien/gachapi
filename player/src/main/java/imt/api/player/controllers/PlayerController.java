@@ -4,8 +4,13 @@ import imt.api.player.player.Monster;
 import imt.api.player.player.Player;
 import imt.api.player.services.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 @RestController
@@ -13,10 +18,32 @@ import java.util.List;
 public class PlayerController {
 
     private final PlayerService playerService;
+    @Autowired
+    private final Environment env;
+
+    private final RestTemplate restTemplate;
 
     @Autowired
-    public PlayerController(PlayerService playerService) {
+    public PlayerController(PlayerService playerService, Environment env) {
         this.playerService = playerService;
+        this.env = env;
+        restTemplate = new RestTemplate();
+    }
+
+    @PostMapping("/token")
+    public String validateToken(@RequestBody String token) {
+        // Define url
+        String url = String.format("%s/validate/%s", env.getProperty("urls.authentification"), token);
+        
+        // Make a POST request and retrieve the response
+        ResponseEntity<String> response = restTemplate.postForEntity(url, null, String.class);
+        
+        // Print the response body
+        if (response.getStatusCode().is2xxSuccessful()) {
+            return response.getBody();
+        }
+        else
+            return "Error";
     }
 
     @GetMapping("/{id}")

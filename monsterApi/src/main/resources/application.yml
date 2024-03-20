@@ -3,7 +3,3 @@ spring:
     mongodb:
       uri: mongodb://mongoadmin:password@localhost:27017
       database: monsterdb
-
-server:
-  port: 8079
-

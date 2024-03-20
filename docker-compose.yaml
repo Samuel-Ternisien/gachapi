@@ -36,6 +36,17 @@ services:
     depends_on:
       db:
         condition: service_healthy
+  
+  player-app:
+    build: ./player/.
+    ports:
+      - "8081:8080"
+    links:
+      - db
+      - account-app
+    depends_on:
+      db:
+          condition: service_healthy
 
 volumes:
   mongo-data:

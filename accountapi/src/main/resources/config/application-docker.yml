@@ -2,3 +2,5 @@ spring:
   data:
     mongodb:
       host: db
+urls:
+  authentifcation: http://account-app:8080/account
