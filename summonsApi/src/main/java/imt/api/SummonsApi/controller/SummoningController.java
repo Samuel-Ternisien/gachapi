@@ -58,7 +58,8 @@ public class SummoningController {
 
     @PostMapping("/{playerId}")
     public ResponseEntity<Map> summonMonster(@RequestHeader String token, @PathVariable String playerId) {
-        validateToken(token);
+        String res = validateToken(token);
+        if (res.equals("Invalid credentials")) return null;
         Random random = new Random();
 
         // Characteristics
