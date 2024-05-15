@@ -1,8 +1,0 @@
-spring:
-  data:
-    mongodb:
-      host: monster-mongo
-      database: monstreJoueur
-      username: mongoadmin
-      password: password
-      authentication-database: admin

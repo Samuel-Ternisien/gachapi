@@ -44,6 +44,7 @@ services:
     links:
       - db
       - account-app
+      - monster-app
     depends_on:
       db:
         condition: service_healthy
@@ -58,6 +59,17 @@ services:
       db:
         condition: service_healthy
 
+  summons-app:
+    build: ./summonsApi/.
+    ports:
+      - "8083:8080"
+    links:
+      - db
+      - monster-app
+      - player-app
+    depends_on:
+      db:
+        condition: service_healthy
 
 volumes:
   mongo-data:

@@ -4,3 +4,5 @@ spring:
       host: db
 urls:
   authentification: http://account-app:8080/account
+  player: http://player-app:8080/player
+  monster: http://monster-app:8080/monster

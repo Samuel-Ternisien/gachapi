@@ -3,4 +3,4 @@ spring:
     mongodb:
       host: localhost
 urls:
-  authentifcation: http://localhost:8080/account
+  authentification: http://localhost:8080/account

@@ -1,0 +1,7 @@
+spring:
+  data:
+    mongodb:
+      host: localhost
+urls:
+  authentification: http://localhost:8080/account
+  monster: http://localhost:8082/monster

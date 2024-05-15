@@ -22,15 +22,17 @@ public class MonsterService {
         this.monsterRepository = monsterRepository;
     }
 
-    public List<Monster> findAllMonsterByPlayerId(int playerId){
+    public List<Monster> findAllMonsterByPlayerId(String playerId){
         return monsterRepository.findByPlayerId(playerId);
     }
+
+    public Monster findMonsterById(String monsterId){ return monsterRepository.findMonsterById(monsterId);}
 
     public List<Monster> findAllMonster(){
         return monsterRepository.findAll();
     }
 
-    public Monster addXpToMonster(int id, double experience){
+    public Monster addXpToMonster(String id, double experience){
         Monster monster = monsterRepository.findMonsterById(id);
         double currentXp = monster.getXp();
         monster.setXp(currentXp + experience);
@@ -46,7 +48,7 @@ public class MonsterService {
         return monsterRepository.save(monster);
     }
 
-    public Monster upgradeCompetence(int id, int skillNum){
+    public Monster upgradeCompetence(String id, int skillNum){
         Monster monster = monsterRepository.findMonsterById(id);
         Skills skill = findSkillById(id, skillNum);
         monster.getSkills().remove(skillNum-1);
@@ -63,8 +65,18 @@ public class MonsterService {
         return monsterRepository.save(monster);
     }
 
-    public Skills findSkillById(int monsterId, int skillNum){
+    public Skills findSkillById(String monsterId, int skillNum){
         Monster monster = monsterRepository.findMonsterById(monsterId);
         return monster.getSkills().get(skillNum-1);
+}
+
+    public Monster addPlayerToMonster(String monsterId, String playerId){
+        Monster monster = monsterRepository.findMonsterById(monsterId);
+        monster.setPlayerId(playerId);
+        return monsterRepository.save(monster);
+    }
+
+    public Monster save(Monster monster) {
+        return monsterRepository.save(monster);
     }
 }

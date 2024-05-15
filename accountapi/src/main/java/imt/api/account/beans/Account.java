@@ -20,15 +20,6 @@ public class Account {
     private @Getter @Setter String password;
     private @Getter @Setter String token;
     private @Getter @Setter LocalDateTime tokenExpiry;
-
-    public Account(String id, String username, String password, String token, LocalDateTime tokenExpiry) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.token = token;
-        this.tokenExpiry = tokenExpiry;
-    }
-
     public String generateToken() throws NoSuchAlgorithmException {
         String token = this.username
                 + "-"

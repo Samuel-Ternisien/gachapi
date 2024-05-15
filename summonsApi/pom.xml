@@ -5,27 +5,22 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.3</version>
+		<version>3.2.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>imt.api.gachapi</groupId>
-	<artifactId>monsterApi</artifactId>
+	<groupId>imt.api</groupId>
+	<artifactId>SummonsApi</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>monsterApi</name>
-	<description>Demo project for Spring Boot</description>
+	<name>SummonsApi</name>
+	<description>Api to handle summoning of monsters</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>21</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -38,7 +33,6 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.springdoc</groupId>
@@ -52,18 +46,8 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</exclude>
-					</excludes>
-					<arguments>
-						<argument>--add-opens=java.base/java.util=ALL-UNNAMED</argument>
-					</arguments>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
+
 </project>
